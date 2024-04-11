@@ -1,0 +1,315 @@
+/* Importing Google font - Open Sans */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+body {
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #00203FFF, #ADEFD1FF);
+}
+
+
+
+
+.container {
+    display: flex;
+    width: 850px;
+    gap: 70px;
+    padding: 60px 40px;
+    background: #fff;
+    border-radius: 0px 0px 80px 80px; /* Rounded bottom-left and bottom-right corners by 80px */
+    align-items: flex-end;
+    justify-content: space-between;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.hangman-box img {
+    user-select: none;
+    max-width: 270px;
+}
+
+.hangman-box h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+    color: #00203FFF;
+}
+
+.game-box .word-display {
+    gap: 10px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.word-display .letter {
+    width: 28px;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #000;
+    color: #00203FFF;
+}
+
+.word-display .letter.guessed {
+    margin: -40px 0 35px;
+    border-color: transparent;
+}
+
+.game-box h4 {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.game-box h4 b {
+    font-weight: 600;
+    color: #00203FFF;
+}
+
+.game-box .guesses-text b {
+    color: #ff0000;
+}
+
+.game-box .keyboard {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+:where(.game-modal, .keyboard) button {
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 40px;
+    text-transform: uppercase;
+    background: #00203FFF;
+}
+
+.keyboard button {
+    padding: 12px;
+    width: calc(100% / 9 - 10px);
+}
+
+.keyboard button[disabled] {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+:where(.game-modal, .keyboard) button:hover {
+    background: #ADEFD1FF;
+    color: #000;
+}
+
+.game-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 0 10px;
+    transition: opacity 0.4s ease;
+}
+
+.game-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.4s 0.4s ease;
+}
+
+.game-modal .content {
+    padding: 30px;
+    max-width: 420px;
+    width: 100%;
+    border-radius: 10px;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.game-modal img {
+    max-width: 130px;
+    margin-bottom: 20px;
+}
+
+.game-modal img[src="images/victory.gif"] {
+    margin-left: -10px;
+}
+
+.game-modal h4 {
+    font-size: 1.53rem;
+    color: #00203FFF;
+}
+
+.game-modal p {
+    font-size: 1.15rem;
+    margin: 15px 0 30px;
+    font-weight: 500;
+    color: #333;
+}
+
+.game-modal p b {
+    color: #00203FFF;
+    font-weight: 600;
+}
+
+.game-modal button {
+    padding: 12px 23px;
+    background: #00203FFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+@media (max-width: 782px) {
+    .container {
+        flex-direction: column;
+        padding: 30px 15px;
+        align-items: center;
+    }
+
+    .hangman-box img {
+        max-width: 200px;
+    }
+
+    .hangman-box h1 {
+        display: none;
+    }
+
+    .game-box h4 {
+        font-size: 1.1rem;
+    }
+
+    .word-display .letter {
+        margin-bottom: 35px;
+        font-size: 1.7rem;
+    }
+
+    .word-display .letter.guessed {
+        margin: -35px 0 25px;
+    }
+
+    .game-modal img {
+        max-width: 120px;
+    }
+
+    .game-modal h4 {
+        font-size: 1.45rem;
+    }
+
+    .game-modal p {
+        font-size: 1.1rem;
+    }
+
+    .game-modal button {
+        padding: 10px 18px;
+    }
+}
+
+/* Basic styling for the navigation */
+nav {
+    background-color: #00203FFF; /* Updated background color */
+    color: #fff;
+    padding: 20px 0; /* Adjusted padding */
+    border-top-left-radius: 15px; /* Rounded bottom left corner */
+    border-top-right-radius: 15px;
+}
+
+.menu-toggle {
+    display: none; /* Hide by default on larger screens */
+    cursor: pointer;
+    padding: 10px;
+    color: #fff;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    padding: 15px 20px; /* Increased padding */
+    transition: background-color 0.3s;
+    font-size: 18px; /* Increased font size */
+}
+
+.menu li {
+    display: inline-block;
+    margin-right: 250px; /* Increased margin between menu items */
+}
+
+.menu li:last-child {
+    margin-right: 0;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    padding: 15px 20px; /* Increased padding */
+    transition: background-color 0.3s;
+    font-size: 18px; /* Increased font size */
+    position: relative; /* Add relative positioning */
+}
+
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0; /* Set initial width to 0 */
+    height: 2px;
+    background-color: #fff; /* White underline color */
+    transition: width 0.3s ease-in-out; /* Smooth transition */
+}
+
+.menu a:hover::after {
+    width: 100%; /* Expand width to 100% upon hover */
+}
+
+
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show on smaller screens */
+    }
+
+    .menu {
+        display: none; /* Hide by default on smaller screens */
+        padding: 10px 0; /* Adjusted padding */
+    }
+
+    .menu.active {
+        display: block; /* Show when active (menu toggle is clicked) */
+    }
+}
